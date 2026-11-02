@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Краткое описание сайта для поисковиков">
+    <meta name="author" content="Твоё имя">
+
+    <title>Мой статический сайт</title>
+
+    <!-- Фавиконка (необязательно) -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <main>
+        <!-- Секция с лого и овалом -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-oval-wrap">
+                    <div class="hero-oval-glow"></div>
+                    <img src="images/logo.png" alt="Главная картинка" class="hero-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- Шапка -->
+        <header class="header">
+            <div class="container">
+                <a href="" class="logo">
+                    <img src="images/logo.png" alt="MySite" class="logo-img">
+                </a>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#services">Персонажи</a></li>
+                        <li><a href="#contact">Все достижения</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Секция: Общая информация -->
+        <section class="info-section">
+            <div class="container">
+                <div class="info-box">
+                <h2>Общая информация</h2>
+                <p>
+                    Справочник по достижениям The Binding of Isaac: Repentance. Здесь собраны достижения
+                    игры, а у каждого — описание и подробные условия получения.
+                </p>
+                <ul class="info-list">
+                    <li>
+                        <h3>Персонажи</h3>
+                        <p>Листайте героев стрелками, точками или свайпом. Иконки на свитке — достижения
+                           выбранного персонажа, нажмите на любую, чтобы узнать подробности.</p>
+                    </li>
+                    <li>
+                        <h3>Все достижения</h3>
+                        <p>Достижения сгруппированы по дополнениям. Фильтры слева можно сочетать между собой,
+                           а клик по иконке открывает карточку с описанием.</p>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </section>
+
+        <!-- Секция: Персонажи -->
+        <section id="services" class="section">
+                
+            <h2 class="section-title">
+                <span>Персонажи</span>
+                <button id="toggle-chars" class="title-toggle-btn">
+                    <img src="images/icon.png" alt="Сменить персонажей" class="title-icon">
+                </button>
+            </h2>
+
+            <div class="container">
+                <div class="slider">
+                    
+                    <!-- Стрелка влево -->
+                    <button class="slider-btn prev" aria-label="Предыдущий">&#10094;</button>
+
+                    <!-- Окно слайдера -->
+                    <div class="slider-window">
+
+                        <!-- ДЕКОР (Свиток с иконками) -->
+                        <div class="decor-container" id="decorContainer">
+                            <img src="images/decor.png" alt="" class="decor-bg" id="decorBg">
+                        </div>
+
+                        <!-- Лента со слайдами -->
+                        <div class="slider-track" id="sliderTrack">
+                            <!-- Слайды сгенерируются через JS -->
+                        </div>
+
+                    </div>
+
+                    <!-- Стрелка вправо -->
+                    <button class="slider-btn next" aria-label="Следующий">&#10095;</button>
+
+                </div>
+
+                <!-- Точки-индикаторы -->
+                <div class="slider-dots" id="sliderDots"></div>
+            </div>
+        </section>
+
+        <!-- Секция: Достижения -->
+        <section id="contact" class="section">
+                
+            <h2 class="section-title">
+                <span>Все достижения</span>
+            </h2>
+
+            <div class="container">
+                <div class="achievements-layout">
+                    
+                    <!-- ЛЕВАЯ ПАНЕЛЬ: Фильтры -->
+                    <aside class="filters-panel">
+                        <h3>Фильтры</h3>
+                        
+                        <button class="filter-btn active" data-filter="all">Сбросить фильтр</button>
+
+                        <button class="boss-filter-btn" style="padding-left: 10px; border: 2px solid #431517; margin-top: 10px;" data-filter="Персонаж">Персонажи</button>
+                        
+                        <button class="boss-filter-btn" style="padding-left: 10px; border: 2px solid #431517; margin-top: 10px;" data-filter="Разное">Разное</button>
+                        
+                        <div class="filter-accordion">
+                            <button class="accordion-toggle" id="bossAccordionBtn">
+                                Боссы <span class="arrow">▼</span>
+                            </button>
+                            
+                            <ul class="accordion-content" id="bossList">
+                                <li><button class="boss-filter-btn" data-filter="Мама">Мама</button></li>
+                                <li><button class="boss-filter-btn" data-filter="Сердце Матери">Сердце Матери</button></li>
+                                <li><button class="boss-filter-btn" data-filter="Босс-раш">Босс-раш</button></li>
+                            </ul>
+                        </div>
+                    </aside>
+
+                    <!-- ПРАВАЯ ПАНЕЛЬ: Сетка -->
+                    <div class="achievements-content" id="achievementsContent">
+                        <!-- Карточки достижений будут генерироваться через JS -->
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Модальное окно для достижений -->
+    <div class="modal-overlay" id="achievementModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <div class="modal-body">
+                <img src="" alt="" class="modal-img" id="modalImg">
+                <div class="modal-text">
+                    <h3 id="modalTitle">Название</h3>
+                    <span class="modal-category" id="modalCategory">Категория</span>
+                    <p id="modalDesc">Описание...</p>
+                    <div class="modal-unlock">
+                        <strong>Как получить:</strong>
+                        <span id="modalUnlock">Условия получения...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/decorData.js"></script>
+    <script src="js/achievements.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

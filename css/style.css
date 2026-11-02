@@ -1,0 +1,680 @@
+/* ========== Сброс стилей ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ========== Базовые стили ========== */
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    line-height: 1.6;
+    color: #1e293b;
+    background: #431517;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --glow-color: #7a262b;
+    --name-bg: url('../images/name-bg.png');
+}
+
+/* Стили для кнопки-иконки */
+.title-toggle-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s;
+    image-rendering: pixelated;
+}
+
+.title-toggle-btn:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ========== Шапка ========== */
+.header {
+    background: #331616;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+}
+
+.logo {
+    display: inline-block;
+}
+
+.logo-img {
+    height: 30px;
+    width: auto;
+    display: block;
+}
+
+.nav ul {
+    display: flex;
+    gap: 24px;
+}
+
+.nav a {
+    color: #ded5aa;
+    transition: color 0.2s;
+}
+
+.nav a:hover {
+    color: #2563eb;
+}
+
+/* ========== Hero ========== */
+.hero {
+    padding: 80px 0;
+    background-color: #431517;
+    background-image: url('../images/background-image.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    image-rendering: pixelated;
+}
+
+.hero-oval-wrap {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+
+.hero-oval-glow {
+    position: absolute;
+    inset: -40px;
+    background: #7a262b;
+    border-radius: 50%;
+    filter: blur(45px);
+    opacity: 1;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero-img {
+    display: block;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* ========== Секции ========== */
+.section {
+    padding: 10px 0;
+    scroll-margin-top: 50px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 2rem;
+    text-align: center;
+    width: 100%;
+    margin: 0 0 40px 0;
+    padding: 5px 20px;
+    background-color: #DDB4AB;
+    color: #331616;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.title-icon {
+    height: 30px;
+    width: auto;
+    display: block;
+}
+
+/* ========== Слайдер ========== */
+.slider {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.slider-window {
+    overflow: hidden;
+    flex: 1;
+    background: transparent;
+    box-shadow: none;
+    position: relative;
+}
+
+/* --- ДЕКОР --- */
+.decor-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 176px;
+    height: auto;
+    z-index: 10;
+    pointer-events: none;
+    image-rendering: pixelated;
+}
+
+.decor-bg {
+    display: block;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+}
+
+.decor-btn {
+    position: absolute;
+    width: 32px;
+    height: auto;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    pointer-events: auto;
+    z-index: 11;
+}
+
+.decor-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+    transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+/* --- Стрелки --- */
+.slider-btn {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    background: rgba(67, 21, 23, 0.6);
+    color: #f5eedc;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+    user-select: none;
+    z-index: 20;
+    margin: 0 10px;
+}
+
+.slider-btn:hover {
+    background: #431517;
+    transform: scale(1.1);
+}
+
+.slider-btn:active {
+    transform: scale(0.95);
+}
+
+/* --- Лента слайдов --- */
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    will-change: transform;
+}
+
+.slide {
+    flex: 0 0 100%;
+    padding: 90px 30px 30px 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.slide-oval-wrap {
+    position: relative;
+    display: block;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 15px;
+    transition: opacity 0.35s ease;
+}
+
+.slide-oval-glow {
+    position: absolute;
+    top: 10px;
+    bottom: -35px;
+    left: -30px;
+    right: -30px;
+    background: var(--glow-color);
+    border-radius: 50%;
+    filter: blur(35px);
+    opacity: 1;
+    z-index: -1;
+    pointer-events: none;
+    transition: background 0.35s ease, opacity 0.35s ease;
+}
+
+.slide-img {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 45px);
+    object-fit: contain;
+    z-index: 2;
+    display: block;
+    transition: opacity 0.35s ease;
+    image-rendering: pixelated;
+}
+
+.slider-track.fading .slide-oval-wrap,
+.slider-track.fading .slide-oval-glow,
+.slider-track.fading .slide-img {
+    opacity: 0;
+}
+
+.name-wrap {
+    z-index: 15; 
+    position: relative;
+    width: 200px;
+    height: 60px;
+    background-image: var(--name-bg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center 4px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-image 0.35s ease;
+    image-rendering: pixelated;
+}
+
+.slide h3 {
+    color: #331616;
+    font-size: 1.4rem;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* --- Точки --- */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #d8cfb8;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.dot:hover {
+    background: #b0a588;
+}
+
+.dot.active {
+    background: #431517;
+    transform: scale(1.2);
+}
+
+/* ========== Секция с общей информацией ========== */
+.info-section {
+    padding: 40px 0;
+    background-color: #431517;
+}
+
+.info-box {
+    background-color: #ded5aa;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px 40px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    color: #5a4e3c;
+}
+
+.info-box h2 {
+    color: #331616;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.info-box p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #4a3f32;
+}
+
+/* ========== Достижения ========== */
+.achievements-layout {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.filters-panel {
+    width: 250px;
+    background: #ded5aa;
+    padding: 20px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filters-panel h3 {
+    color: #331616;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.filter-btn {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 2px solid #431517;
+    color: #431517;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #431517;
+    color: #ded5aa;
+}
+
+.filter-accordion {
+    display: flex;
+    flex-direction: column;
+}
+
+.accordion-toggle {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 2px solid #431517;
+    color: #431517;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s, color 0.2s;
+    font-weight: bold;
+}
+
+.accordion-toggle:hover {
+    background: rgba(67, 21, 23, 0.1);
+}
+
+.accordion-toggle .arrow {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.accordion-toggle.open {
+    background: #431517;
+    color: #ded5aa;
+}
+
+.accordion-toggle.open .arrow {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.accordion-content.open {
+    max-height: 400px;
+}
+
+.boss-filter-btn {
+    width: 100%;
+    padding: 8px 10px 8px 25px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(67, 21, 23, 0.2);
+    color: #431517;
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s;
+}
+
+.boss-filter-btn:last-child {
+    border-bottom: none;
+}
+
+.boss-filter-btn:hover,
+.boss-filter-btn.active {
+    background: #431517;
+    color: #ded5aa;
+}
+
+.achievements-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.achievement-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.group-title {
+    font-size: 1.5rem;
+    color: #ded5aa;
+    border-bottom: 2px solid #ded5aa;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+    gap: 10px;
+}
+
+.achievement-card {
+    background: #2a0d0f;
+    border: 2px solid #5a1d21;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    position: relative;
+    will-change: transform;
+}
+
+.achievement-card:hover {
+    border-color: #ded5aa;
+    box-shadow: 0 0 15px rgba(222, 213, 170, 0.4);
+    z-index: 2;
+}
+
+.achievement-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+    display: block;
+}
+
+/* ========== Модальное окно ========== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: #431517;
+    width: 90%;
+    max-width: 600px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #ded5aa;
+    cursor: pointer;
+    line-height: 1;
+    transition: transform 0.2s;
+}
+
+.modal-close:hover {
+    transform: scale(1.2);
+}
+
+.modal-body {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.modal-img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    background: #2a0d0f;
+    padding: 10px;
+    image-rendering: pixelated;
+    border: 2px solid #431517;
+    flex-shrink: 0;
+}
+
+.modal-text {
+    flex: 1;
+    color: #ded5aa;
+}
+
+.modal-text h3 {
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+    color: #ded5aa;
+}
+
+.modal-category {
+    display: inline-block;
+    background: #ded5aa;
+    color: #431517;
+    padding: 2px 10px;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+}
+
+.modal-text p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #c4bca0;
+}
+
+.modal-unlock {
+    background: rgba(67, 21, 23, 0.1);
+    padding: 15px;
+    border-left: 4px solid #ded5aa;
+    font-size: 0.95rem;
+}
+
+.modal-unlock strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #ded5aa;
+}
